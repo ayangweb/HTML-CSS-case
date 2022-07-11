@@ -1,0 +1,109 @@
+/* 观看此视频之前可以看一下上个视频简介 接上个视频发的哈 */
+* {
+	/* 初始化 清除元素的内外边距 */
+	padding: 0;
+	margin: 0;
+	/* 盒子模型 */
+	box-sizing: border-box;
+}
+body {
+	/* 宽度占浏览器可视区域的宽度 */
+	width: 100vm;
+	background-color: #f2f2f2;
+}
+.navbar {
+	/* 相对定位 */
+	position: relative;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #fff;
+	/* 盒子阴影 */
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.navbar input {
+	/* 隐藏元素 */
+	display: none;
+}
+.navbar label {
+	/* 绝对定位 */
+	position: absolute;
+	top: 0;
+	left: 200px;
+	font-size: 20px;
+	color: #666;
+	padding-left: 20px;
+	cursor: pointer;
+	/* 加过渡 */
+	transition: all 0.5s;
+}
+.navbar ul {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	/* 高度占浏览器可视区域的高度 */
+	height: 100vh;
+	background-color: #20222a;
+	transition: all 0.5s;
+}
+.navbar ul li {
+	width: 100%;
+	height: 70px;
+	margin-bottom: 10px;
+}
+.navbar ul li:first-child {
+	/* 弹性布局 让图片和文字垂直+水平居中于盒子内 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 改变了盒子的主轴方向 让两个元素垂直排列 */
+	flex-direction: column;
+	width: 100%;
+	height: 150px;
+	padding: 10px;
+}
+.navbar ul li:first-child img {
+	width: 80px;
+	border-radius: 50%;
+}
+.navbar ul li:first-child span {
+	color: #fff;
+	font-size: 14px;
+	/* 禁止文字换行 */
+	white-space: nowrap;
+}
+.navbar ul li a {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	color: #d2d2d2;
+	/* 取消a标签的下划线 */
+	text-decoration: none;
+	/* 现在盒子内直接定义好左边框 不过颜色为透明色也就看不见 */
+	border-left: 6px solid transparent;
+}
+.navbar ul li a i {
+	font-size: 18px;
+	margin: 0 15px;
+}
+.navbar ul li a span {
+	font-size: 14px;
+}
+.navbar ul li a:hover {
+	color: #fff;
+	/* 这样文字和图标会被带跑不太好看 解决办法很简单 */
+	/* 然后鼠标放上去变颜色就可以了 */
+	border-left-color: #fb7299;
+}
+.navbar input:checked + label {
+	left: 0;
+}
+.navbar input:checked + label i {
+	/* 沿着y轴旋转180度 */
+	transform: rotateY(180deg);
+}
+.navbar input:checked ~ ul {
+	left: -200px;
+}

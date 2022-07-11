@@ -1,0 +1,73 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+ul {
+	/* 让li水平排列 */
+	display: flex;
+}
+ul li {
+	position: relative;
+	/* 取消项目编号 就是小黑点 */
+	list-style: none;
+	width: 150px;
+	height: 50px;
+	/* 让鼠标变成小手 */
+	cursor: pointer;
+	/* 让子元素保留其3D位置 */
+	transform-style: preserve-3d;
+	transition: all 1s;
+}
+ul li:hover {
+	transform: rotateX(90deg);
+}
+ul li:hover div:first-child {
+	background-color: #51938f;
+	background-size: 5px 5px;
+	background-position: 30px 30px;
+	background-image: linear-gradient(
+		45deg,
+		#478480 25%,
+		rgba(0, 0, 0, 0) 25%,
+		rgba(0, 0, 0, 0) 75%,
+		#478480 75%,
+		#478480
+	);
+}
+ul li div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+}
+ul li div:first-child {
+	background-color: #74adaa;
+	transform: translateZ(25px);
+}
+ul li div:last-child {
+	background-color: #51938f;
+	background-size: 5px 5px;
+	background-position: 30px 30px;
+	background-image: linear-gradient(
+		45deg,
+		#478480 25%,
+		rgba(0, 0, 0, 0) 25%,
+		rgba(0, 0, 0, 0) 75%,
+		#478480 75%,
+		#478480
+	);
+	/* 让第二个面往下移动25px 沿着X轴旋转-90度 */
+	transform: translateY(25px) rotateX(-90deg);
+}

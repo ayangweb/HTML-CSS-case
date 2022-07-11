@@ -1,0 +1,78 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占浏览器总高 */
+	height: 100vh;
+	/* 背景渐变色 */
+	background-image: linear-gradient(200deg, #78f, #f78);
+	/* 这里现在我们动画看起来硬生生的，没有任何的立体感 所以我们需要添加这个属性来增加卡片旋转的立体感 当然值越小 立体感就会越明显 立体感最明显的地方就是近小远大 这个是的意思就是设置视距 相当于你的眼睛离一个东西的距离 当这个东西离你的眼睛越近 那么这个东西就会越大 这期的很多知识点可能小伙伴看的不是特别明白 所以小伙伴们如果有什么不懂得就在评论区给我留言 我会一一为大家解答  录声音不太方便 就只能以文字的形式来为大家解答了  谢谢大家的支持 最后不要忘了三连*/
+	perspective: 1000px;
+}
+.card {
+	/* 相对定位 */
+	position: relative;
+	width: 300px;
+	height: 450px;
+	/* 圆角属性 */
+	border-radius: 30px;
+	/* 鼠标放到元素上呈现小手的形状 */
+	cursor: pointer;
+	background-color: #fff;
+	/* 盒子阴影 */
+	box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+	/* 给父元素 加一个3D盒子属性 那么子元素就到背面了 这个属性是加到父元素上 但是影响的是子元素 */
+	transform-style: preserve-3d;
+	animation: rotate-reverse 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+}
+.card:hover {
+	/* 动画 名称 时长 第三个属性是贝塞尔曲线 我们可以自定义动画的运动轨迹 让动画的运动轨迹有了很多种可能 第四个属性是当我们的动画完成是的状态 一般动画完成之后就回到了0%的状态 默认值是backwards 当我们给属性值是forwards的时候那么当动画到100%的时候就会停下来 不会再回到0% */
+	animation: rotate 1.2s cubic-bezier(0.66, -0.47, 0.33, 1.5) forwards;
+}
+.front,
+.back {
+	display: flex;
+	/* 弹性布局 让元素垂直陈列 */
+	flex-direction: column;
+	/* 现在子元素垂直陈列 那么就是让子元素 水平居中 */
+	align-items: center;
+	/* 平均分配高度给每一个子元素 */
+	justify-content: space-around;
+	/* 绝对定位  子元素是绝对定位 父元素需要相对定位 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* 1em = 16px */
+	font-size: 1.3em;
+	border-radius: 30px;
+	background-color: #fff;
+}
+.back {
+	/* 因为背面卡片要到后面去所以我们给背面卡片加一个沿Y轴旋转180度的属性 这里面我们可以看到是旋转了但是没有到后面 原因就是父盒子现在不是3D盒子 而是一个2D盒子 所以我们必须让父元素变成3D盒子 */
+	transform: rotateY(180deg);
+}
+/* 下面我们定义一下翻转动画 */
+@keyframes rotate {
+	0% {
+		transform: rotateY(0);
+	}
+	100% {
+		transform: rotateY(180deg);
+	}
+}
+
+@keyframes rotate-reverse {
+	0% {
+		transform: rotateY(180deg);
+	}
+	100% {
+		transform: rotateY(0);
+	}
+}

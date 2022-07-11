@@ -1,0 +1,159 @@
+* {
+	/* 初始化 清除元素的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面占浏览器可视区域的宽的和高度 */
+	width: 100vm;
+	height: 100vh;
+}
+.background {
+	/* 绝对定位 因为该元素没有父元素 那么就默认以浏览器可视区域来定位 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #c2e9f6;
+	/* 元素的堆叠顺序 不加这个属性的话其它元素就被覆盖了 这个值只要是个-值即可 */
+	z-index: -1;
+	/* 提前加好元素的过渡 不然待会一个一个加就晕了 ease-in是从慢速开始一直加速到结束 */
+	transition: all 0.25s ease-in;
+}
+input {
+	/* 隐藏复选框 */
+	display: none;
+}
+label {
+	position: relative;
+	width: 200px;
+	height: 100px;
+	border-radius: 100px;
+	border: 5px solid #72cce3;
+	background-color: #96dcee;
+	transition: all 0.35s ease-in;
+}
+label::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 82px;
+	height: 82px;
+	border-radius: 50%;
+	border: 5px solid #f5eb71;
+	background-color: #fffaa8;
+	transition: all 0.35s ease-in;
+	animation: switch-reverse 0.35s forwards;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+label::after {
+	content: "";
+	position: absolute;
+	top: 23px;
+	left: 143px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	box-shadow: -13px 0 0 2px #e8e8ea, -24px 14px 0 -2px #e8e8ea;
+	transition: all 0.25s ease-in;
+	/* 不透明度 为0 就是隐藏了 */
+	opacity: 0;
+}
+label span {
+	position: relative;
+	top: 45px;
+	left: 135px;
+	/* span是行内元素 需要将其转为块级元素才能设置宽度和高度 */
+	display: block;
+	width: 10px;
+	height: 5px;
+	border-radius: 5px;
+	background-color: #fff;
+	transition: all 0.15s ease-in;
+}
+label span::before,
+label span::after {
+	/* 将两个伪元素相同的代码写一块 */
+	content: "";
+	position: absolute;
+	width: 40px;
+	height: 5px;
+	border-radius: 5px;
+	background-color: #fff;
+	transition: all 0.15s ease-in;
+}
+label span::before {
+	top: -5px;
+	left: -20px;
+}
+label span::after {
+	top: 5px;
+	left: -10px;
+}
+input:checked ~ .background {
+	background-color: #808fc7;
+}
+input:checked + label {
+	border-color: #5d6baa;
+	background-color: #6b7abb;
+}
+input:checked + label::before {
+	border-color: #e8e8ea;
+	background-color: #fff;
+	/* 这里面需要动画我们先把动画定义好 */
+	/* 动画 名称 时长 forwards就是动画完成后定制100%是的状态 */
+	animation: switch 0.35s forwards;
+}
+input:checked + label::after {
+	opacity: 1;
+	/* 过渡延迟时间 */
+	transition-delay: 0.25s;
+}
+input:checked + label span {
+	width: 5px;
+	left: 60px;
+}
+input:checked + label span::before {
+	width: 5px;
+	height: 5px;
+	top: -25px;
+}
+input:checked + label span::after {
+	width: 5px;
+	height: 5px;
+	top: 20px;
+	left: -30px;
+}
+
+@keyframes switch {
+	0% {
+		left: 4px;
+	}
+	60% {
+		left: 4px;
+		width: 112px;
+	}
+	100% {
+		left: 104px;
+	}
+}
+/* 顺便定义取消复选框选中状态的动画 */
+@keyframes switch-reverse {
+	0% {
+		left: 104px;
+	}
+	60% {
+		left: 72px;
+		width: 112px;
+	}
+	100% {
+		left: 4px;
+	}
+}

@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+.container {
+  margin: 50px 0 0 200px; }
+  .container h2 {
+    margin-bottom: 20px; }
+  .container .list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; }
+    .container .list li {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 20px 20px 0; }
+      .container .list li img {
+        width: 100%;
+        height: 100%; }
+      .container .list li .close {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 50px;
+        font-weight: 100;
+        color: #dedede;
+        transform: translate(-50%, -56%); }
+        .container .list li .close:hover {
+          color: #fff; }
+      .container .list li.file {
+        width: 150px;
+        height: 150px;
+        border: 1px dashed #ccc; }
+        .container .list li.file input {
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer; }
+        .container .list li.file::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          content: "+";
+          font-size: 50px;
+          font-weight: 100;
+          color: #dedede;
+          transform: translate(-50%, -56%); }
+        .container .list li.file:hover {
+          border-color: #5192fe; }
+      .container .list li:not(:last-child)::before {
+        display: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); }
+      .container .list li:not(:last-child):hover::before {
+        display: block; }
+      .container .list li:not(:last-child):hover .close {
+        display: block; }

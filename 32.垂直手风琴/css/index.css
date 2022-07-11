@@ -1,0 +1,125 @@
+* {
+	/* 页面初始化 清除元素原有的内外边距 */
+	padding: 0;
+	margin: 0;
+	/* 盒子模型 */
+	box-sizing: border-box;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面占浏览器可视区域的高度 */
+	height: 100vh;
+}
+li {
+	/* 清除li元素前面的项目符号 */
+	list-style: none;
+}
+
+.accordion {
+	/* 溢出隐藏 */
+	overflow: hidden;
+	width: 300px;
+	/* 圆角属性 */
+	border-radius: 8px;
+	/* 盒子阴影 */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.accordion > li {
+	width: 100%;
+}
+.accordion > li input {
+	/* 将单选按钮隐藏起来 */
+	display: none;
+}
+.accordion > li label {
+	/* 相对定位 */
+	position: relative;
+	/* label元素是行内元素 需要将其转为块级元素 才能设置宽度和高度 */
+	display: block;
+	width: 100%;
+	padding: 20px 50px;
+	color: #fff;
+	background-color: #5fb878;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+.accordion > li label i {
+	/* 绝对定位 */
+	position: absolute;
+	/* calc方法自动计算数值 让字体图标垂直居中 */
+	top: calc(50% - 12px);
+	left: 20px;
+	font-size: 24px;
+	/* 加过渡 */
+	transition: all 0.5s;
+}
+.accordion > li label::after {
+	content: "";
+	/* 我们想通过after伪元素来实现三角形 有两种方法 我都给大家写出 哪种简单就用哪种 */
+	position: absolute;
+	right: 20px;
+	bottom: -14px;
+	width: 30px;
+	height: 15px;
+	/* inherit这个属性值可以继承父元素的属性值 */
+	background-color: inherit;
+	/* 这个属性在上期视频有讲解 这里就不浪费时间了 想了解的可以去看上期视频 我们一起来看第二种方法 */
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+/* .accordion > li label::after {
+	content: "";
+	position: absolute;
+	right: 25px;
+	bottom: -10px;
+	width: 20px;
+	height: 20px;
+	background-color: inherit;
+	/* 第二种方法是通过旋转来实现 这种方法显然比第一种简单 
+	transform: rotate(45deg);
+} */
+.accordion > li label:hover {
+	background-color: #53aa6c;
+}
+/* :not()选择器选取的是除括号里的元素以外的其它元素 :first-child选择器是第一个元素 */
+.accordion > li:not(:first-child) label {
+	border-top: 1px solid #38814d;
+}
+.accordion > li ol {
+	width: 100%;
+	background-color: #333;
+}
+.accordion > li ol li {
+	position: relative;
+	width: 100%;
+	height: 0;
+	line-height: 50px;
+	padding-left: 20px;
+	color: #fff;
+	cursor: pointer;
+	/* 加过渡 */
+	transition: all 0.5s;
+}
+.accordion > li ol li::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 0;
+	width: 5px;
+	height: 44px;
+	background-color: #5fb878;
+	transform: scaleY(0);
+	/* 加过渡 */
+	transition: all 0.5s;
+}
+.accordion > li ol li:hover::before {
+	transform: scaleY(1);
+}
+.accordion > li input:checked ~ label i {
+	transform: rotate(90deg);
+}
+.accordion > li input:checked ~ ol li {
+	height: 50px;
+}

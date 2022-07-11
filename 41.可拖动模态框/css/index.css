@@ -1,0 +1,119 @@
+* {
+	padding: 0;
+	margin: 0;
+	/* 文字禁止选中 */
+	user-select: none;
+	/* 盒子模型 */
+	box-sizing: border-box;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 高度占浏览器可视区域的总高度 */
+	height: 100vh;
+	/* 加个溢出隐藏 不然这屏幕乱飘 */
+	overflow: hidden;
+}
+button {
+	/* 取消按钮自带的轮廓 */
+	outline: 0;
+	width: 100px;
+	height: 40px;
+	color: #409eff;
+	/* 圆角属性 */
+	border-radius: 4px;
+	border: 1px solid #b3d8ff;
+	background-color: #ecf5ff;
+	/* 过渡 */
+	transition: all 0.3s;
+	/* 鼠标变小手 */
+	cursor: pointer;
+}
+button:hover {
+	color: #fff;
+	border-color: #409eff;
+	background-color: #409eff;
+}
+/* 模态框 start */
+.model-box {
+	/* 隐藏模态框 */
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.45);
+}
+.model-box .content {
+	position: absolute;
+	top: 100px;
+	/* calc方法可以自动计算数值 */
+	left: calc(50% - 210px);
+	width: 420px;
+	height: 350px;
+	border-radius: 5px;
+	padding: 0 20px;
+	/* 盒子阴影 */
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+}
+.model-box .content .title {
+	/* 弹性布局 */
+	display: flex;
+	/* 让子元素水平与两端对齐 */
+	justify-content: space-between;
+	height: 60px;
+	line-height: 60px;
+	/* 鼠标移入呈现移动光标 */
+	cursor: move;
+}
+.model-box .content .title span {
+	font-size: 18px;
+	color: #333;
+}
+.model-box .content .title i {
+	/* i标签默认是斜体 这个属性可以变正 */
+	font-style: normal;
+	font-size: 24px;
+	color: #909399;
+	cursor: pointer;
+}
+/* 鼠标移入变色 */
+.model-box .content .title i:hover {
+	color: #409eff;
+}
+.model-box .content form .form-input {
+	margin: 20px 0;
+}
+/* 因为label元素的for属性和input元素id属性设置了相同的属性值 所以就可以通过label元素选中 输入框 布局已完成 下一个视频开始js的书写 */
+.model-box .content form .form-input label {
+	font-size: 14px;
+	color: #606266;
+	cursor: pointer;
+}
+.model-box .content form .form-input input {
+	/* 取消输入框默认的轮廓 表单元素一般都有轮廓 很不好看 */
+	outline: 0;
+	width: 100%;
+	height: 42px;
+	padding: 0 15px;
+	margin-top: 20px;
+	border: 1px solid #dcdfe6;
+	border-radius: 4px;
+}
+.model-box .content form .form-input input:hover {
+	border-color: #c0c4cc;
+}
+/* 输入框获取焦点变色 */
+.model-box .content form .form-input input:focus {
+	border-color: #409eff;
+}
+.model-box .content form .form-input button {
+	/* 让按钮浮动到右侧 */
+	float: right;
+	margin-top: 10px;
+}
+/* 模态框 end */

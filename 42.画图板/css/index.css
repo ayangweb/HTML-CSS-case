@@ -1,0 +1,37 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	display: flex;
+	justify-content: center;
+}
+.options {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+.options input {
+	/* 清除input自带的轮廓 */
+	outline: 0;
+	margin-left: 20px;
+}
+.options button {
+	/* 简单修饰一下按钮 */
+	/* 同样清除轮廓 */
+	outline: 0;
+	/* 把边框也去掉 */
+	border: 0;
+	padding: 10px 20px;
+	/* 加个圆角 */
+	border-radius: 3px;
+	color: #fff;
+	background-color: #0d53ff;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+/* 给画布一个边框 */
+canvas {
+	margin-top: 20px;
+	border: 1px solid #000;
+}

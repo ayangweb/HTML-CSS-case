@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(rgb(90, 90, 250), rgb(3, 3, 110));
+}
+
+.container,
+.mave {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.container {
+    border: 3px solid darkturquoise;
+    padding: 10px;
+}
+
+.mave {
+    position: relative;
+    background-color: skyblue;
+    overflow: hidden;
+}
+
+.mave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    /* 背景颜色 a表示背景颜色的不透明度 */
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 40%;
+    /* 可以快速让元素垂直+水平居中 -50%表示了让元素向左移动父元素宽度的一半，-60%代表让元素向上移动父元素的高度的60%，css3
+    的新属性，使用起来非常方便，不用考虑父元素的高度和宽度，若要使用maigin的话就要考虑父元素的高度和宽度，还要计算出元素移动的大小位置 */
+    transform: translate(-50%, -60%);
+    /* 动画   名称 时长 linear 表示匀速运动  infinite 表示无限次播放 */
+    animation: mave 5s linear infinite;
+}
+
+.mave::after {
+    content: 'oceanball';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    /* 文字大写 */
+    text-transform: uppercase;
+    color: darkturquoise;
+    font-weight: 700;
+    transform: translate(-50%, 0);
+}
+
+/* 下面定义水波纹效果 */
+@keyframes mave {
+    100% {
+        /* 这个属性是旋转度数 360deg就表示旋转360度 考虑到要言中心的旋转 所以translate属性也要添加进来*/
+        transform: translate(-50%, -60%) rotate(360deg);
+    }
+}

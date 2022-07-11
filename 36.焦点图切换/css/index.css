@@ -1,0 +1,123 @@
+* {
+	/* 页面初始化 清除元素额内外边距 */
+	padding: 0;
+	margin: 0;
+	/* 盒子模型 改变盒子的宽度的计算方式 */
+	box-sizing: border-box;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面高度占浏览器可视区域的高度 */
+	height: 100vh;
+	background-color: #393d49;
+}
+.container {
+	width: 1000px;
+	height: 500px;
+}
+.container ul {
+	/* 清除li元素前面的小黑点 */
+	list-style: none;
+	/* 相对定位 */
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/* 弹性布局  */
+	display: flex;
+	/* 让子元素(弹性项目)平均分配宽度 */
+	justify-content: space-around;
+	/* 这个属性是让子元素在交叉轴(Y轴)的最下面排列 */
+	/* 默认在最上面  加了就在最下面*/
+	align-items: flex-end;
+}
+/* 小图片 start */
+.container ul li {
+	width: 200px;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+.container ul li img {
+	width: 100%;
+	/* 加个透明边框 让图片看起来有距离 */
+	border: 5px solid transparent;
+}
+/* 小图片 end */
+
+/* 大图片 start */
+.container ul .bigImg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1000px;
+	height: 400px;
+	/* 给大图片 也加一个透明边框 不为了啥 就是为了和小图片对称 */
+	border: 5px solid transparent;
+	/* 背景   图片路径   no-repeat是让图片不重复 默认是重复的 */
+	background: url(../img/1.jpg) no-repeat;
+	/* 图片以宽度为最大铺满整个盒子 */
+	background-size: contain;
+	transition: all 0.5s;
+}
+/* 大图片 end */
+
+/* 移动框 start */
+.container ul .frame {
+	position: absolute;
+	left: 0;
+	bottom: 4px;
+	width: 200px;
+	height: 80px;
+	border: 5px solid salmon;
+	/* 这里有bug 一直闪烁 这个问题的原因就是 这个移动框虽然没有背景色 但是覆盖了这个图片 */
+	/* 加这个属性就可以了 让这个移动框 不在被鼠标捕捉到 */
+	pointer-events: none;
+	/* 加过渡 */
+	transition: all 0.5s;
+}
+/* 用伪元素做三角 */
+.container ul .frame::before {
+	content: "";
+	position: absolute;
+	top: -19px;
+	/* calc方法自动计算 让三角盒子水平居中 */
+	left: calc(50% - 15px);
+	width: 30px;
+	height: 15px;
+	background-color: salmon;
+	/* 这个属性我在导航栏那一期有讲 可以去看看 这里就不啰嗦了 */
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+/* 移动框 end */
+.container ul li:nth-child(1):hover ~ .bigImg {
+	background-image: url(../img/1.jpg);
+}
+.container ul li:nth-child(1):hover ~ .frame {
+	left: 0;
+}
+.container ul li:nth-child(2):hover ~ .bigImg {
+	background-image: url(../img/2.jpg);
+}
+.container ul li:nth-child(2):hover ~ .frame {
+	left: 200px;
+}
+.container ul li:nth-child(3):hover ~ .bigImg {
+	background-image: url(../img/3.jpg);
+}
+.container ul li:nth-child(3):hover ~ .frame {
+	left: 400px;
+}
+.container ul li:nth-child(4):hover ~ .bigImg {
+	background-image: url(../img/4.jpg);
+}
+.container ul li:nth-child(4):hover ~ .frame {
+	left: 600px;
+}
+.container ul li:nth-child(5):hover ~ .bigImg {
+	background-image: url(../img/5.jpg);
+}
+.container ul li:nth-child(5):hover ~ .frame {
+	left: 800px;
+}

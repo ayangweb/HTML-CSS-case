@@ -1,0 +1,81 @@
+/* :root 是根选择器
+   定义一下公共的颜色变量 */
+:root {
+	--bg-color: #060715;
+	--logo-color1: #fff;
+	--logo-color2: #ea3355;
+	--logo-color3: #72f6ef;
+}
+
+/* 老样子，清除所有元素的内外边距 */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/* 让元素垂直+水平居中 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* 让页面占浏览器可视区域总高 */
+
+	height: 100vh;
+	/* css 变量用 var 方法调用 */
+
+	background-color: var(--bg-color);
+}
+
+.logo {
+	/* 相对定位 所谓：子绝父相 */
+	position: relative;
+
+	width: 40px;
+	height: 220px;
+
+	background-color: var(--logo-color1);
+	/* 先用 box-shadow 阴影复刻一道 */
+	box-shadow: 10px 10px 0 var(--logo-color2);
+	/* 再用 drop-shadow 复刻一道 */
+	/* 那么两者都是阴影，有什么区别呢，简单说一下，前者是只能复刻出矩形，而后者可以复刻你图像原来的模样，除了颜色自定义不同，可以复刻 100% 的样子, 案例见*/
+	/* 最重要的，前者不能作用于伪元素，后者可以 */
+
+	filter: drop-shadow(-10px -10px 0 var(--logo-color3));
+}
+
+.logo::before,
+.logo::after {
+	/* 绝对定位 */
+	position: absolute;
+
+	content: "";
+	transform: rotate(45deg);
+
+	border-radius: 50%;
+
+	filter: drop-shadow(14px 0 0 var(--logo-color2));
+}
+
+.logo::before {
+	top: 125px;
+	right: 0;
+
+	width: 100px;
+	height: 100px;
+
+	border: 40px solid var(--logo-color1);
+	border-top-color: transparent;
+}
+
+.logo::after {
+	top: -100px;
+	left: 10px;
+
+	width: 140px;
+	height: 140px;
+
+	border: 30px solid transparent;
+	border-bottom-color: var(--logo-color1);
+}
+
+/* 这样，一个简单的抖音 logo 就复刻完成了，哈哈哈，拜拜喽，我们下期见 */

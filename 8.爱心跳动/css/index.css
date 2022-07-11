@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.love{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform: rotate(45deg);
+    background-color: crimson;
+    animation: love 1s infinite;
+}
+
+/* 使用after和before伪元素来制作圆形的两边 */
+.love::after,.love::before{
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: crimson;
+    animation: love 1s infinite;
+}
+
+.love::after{
+    top: 0px;
+    left: -100px;
+}
+
+.love::before{
+    top: -100px;
+    left: 0;
+}
+
+@keyframes love{
+    0%{
+        width: 200px;
+        height: 200px;
+    }
+    20%{
+        width: 230px;
+        height: 230px;
+        background-color: #ef3953;
+    }
+    100%{
+        width: 200px;
+        height: 200px;
+    }
+}

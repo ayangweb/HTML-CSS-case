@@ -1,0 +1,102 @@
+* {
+    /* 初始化 取消页面的内外边距 */
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* 弹性布局 让页面垂直+水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面占浏览器总高 */
+    height: 100vh;
+}
+
+.box {
+    /* 相对定位 */
+    position: relative;
+    width: 600px;
+    height: 375px;
+    /* 背景图片 */
+    background: url(../images/1.jpg);
+    /* 背景图片自适应宽和高 */
+    background-size: contain;
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+
+.box::before {
+    /* 利用伪元素做文字说明 */
+    content: '火影忍者 - 鸣人';
+    /* 绝对定位 */
+    position: absolute;
+    top: -375px;
+    left: 0;
+    width: 600px;
+    height: 375px;
+    /* 行高 让文字垂直居中 */
+    line-height: 375px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    /* 背景颜色 a代表背景颜色不透明度 */
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.box:hover::before {
+    top: 0;
+    /* 动画 名称   时长 */
+    animation: dropdown 2s;
+}
+
+/* 下面定义下降动画 */
+@keyframes dropdown {
+    0% {
+        top: -375px;
+    }
+
+    5% {
+        top: 0;
+    }
+
+    10% {
+        top: -30px;
+    }
+
+    20% {
+        top: 0;
+    }
+
+    30% {
+        top: -20px;
+    }
+
+    40% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    60% {
+        top: 0;
+    }
+
+    70% {
+        top: -10px;
+    }
+
+    80% {
+        top: 0;
+    }
+
+    90% {
+        top: -5px;
+    }
+
+    100% {
+        top: 0;
+    }
+}

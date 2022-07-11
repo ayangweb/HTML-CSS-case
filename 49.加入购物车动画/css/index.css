@@ -1,0 +1,210 @@
+* {
+	padding: 0;
+	margin: 0;
+	/* 元素禁止被选中 */
+	user-select: none;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #ebf4ff;
+}
+
+.addToCart {
+	/* 溢出隐藏 */
+	overflow: hidden;
+	position: relative;
+	width: 300px;
+	height: 80px;
+	border-radius: 80px;
+	font-size: 20px;
+	color: #fff;
+	background-color: #0077fa;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+	/* 过渡时间 */
+	transition: all 0.3s;
+}
+
+.addToCart:hover {
+	background-color: #0062d6;
+}
+
+/* 当元素被按住时 */
+.addToCart:active {
+	transform: scale(0.95);
+	background-color: #004fb3;
+}
+
+.addToCart .tooltip,
+.addToCart .settle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* 让元素往左和往上移动自身宽度/高度的一半 */
+	transform: translate(-50%, -50%);
+	transition: all 0.3s;
+}
+
+.addToCart .tooltip::before,
+.addToCart .tooltip::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+	width: 18px;
+	height: 3px;
+	background-color: #fff;
+}
+
+.addToCart .tooltip::after {
+	/* 元素旋转90° */
+	transform: rotate(90deg);
+}
+
+.addToCart .settle {
+	top: calc(50% + 20px);
+	opacity: 0;
+}
+
+/* 购物车 start */
+.addToCart .cart {
+	position: absolute;
+	top: calc(50% - 10px);
+	left: -50px;
+	width: 40px;
+	height: 30px;
+	/* inherit属性可以集成父元素的属性值 */
+	background-color: inherit;
+	/* 提高层级压住dots */
+	z-index: 66;
+	transform: rotate(-16deg);
+}
+/* 把手 start */
+.addToCart .cart .handle {
+	position: absolute;
+	top: -10px;
+	left: -12px;
+	width: 12px;
+	height: 3px;
+	background-color: #fff;
+	transform: rotate(8deg);
+}
+.addToCart .cart .handle::after {
+	content: "";
+	position: absolute;
+	left: 15px;
+	width: 3px;
+	height: 40px;
+	background-color: #fff;
+	transform: rotate(-16deg);
+}
+/* 把手 end */
+/* 整体框架 start */
+.addToCart .cart .frame {
+	position: absolute;
+	left: 40px;
+	width: 3px;
+	height: 30px;
+	background-color: #fff;
+	transform: rotate(8deg);
+}
+.addToCart .cart .frame::before,
+.addToCart .cart .frame::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: -40px;
+	width: 41px;
+	height: 3px;
+	background-color: #fff;
+	transform: rotate(-8deg);
+}
+.addToCart .cart .frame::after {
+	top: 31px;
+	left: -34px;
+	width: 37px;
+}
+/* 整体框架 end */
+/* 轮子 start */
+.addToCart .cart::after {
+	content: "";
+	position: absolute;
+	top: 33px;
+	left: 3px;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: #fff;
+	box-shadow: 32px 0 0 #fff;
+}
+/* 轮子 end */
+/* 购物车 end */
+
+.addToCart .dots {
+	position: absolute;
+	top: calc(50% + 3px);
+	left: calc(50% - 9px);
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: #fff;
+	box-shadow: 8px 0 0 #fff, 16px 0 0 #fff;
+	opacity: 0;
+}
+
+.addToCart.added .tooltip {
+	opacity: 0;
+}
+
+.addToCart.added .settle {
+	top: 50%;
+	opacity: 1;
+	/* 过渡效果1.5s 后执行 */
+	transition: all 0.3s 1.5s;
+}
+
+.addToCart.added .cart {
+	animation: cart 2s forwards;
+}
+
+.addToCart.added .dots {
+	/* forwards 会让动画停留在最后一刻 */
+	animation: dots 2s forwards;
+}
+
+@keyframes cart {
+	40%,
+	47%,
+	54% {
+		transform: translate(180px, 2px);
+	}
+	41%,
+	49%,
+	57%,
+	60% {
+		transform: translateX(180px);
+	}
+	100% {
+		transform: translateX(370px) rotate(-16deg);
+	}
+}
+
+@keyframes dots {
+	25% {
+		transform: translateY(-26px);
+	}
+	31% {
+		box-shadow: 8px -4px 0 #fff, 16px -8px 0 #fff;
+	}
+	32% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	51% {
+		opacity: 0;
+	}
+}

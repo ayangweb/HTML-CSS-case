@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+}
+
+.effect {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    /* 对比度 */
+    filter: contrast(10);
+    background: #fff;
+    border-radius: 50%;
+}
+
+.blackball,
+.redball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    border-radius: 50%;
+    filter: blur(5px);
+    transform: translate(-50%, -50%);
+}
+
+.blackball {
+    width: 100px;
+    height: 100px;
+    background: #000;
+    margin: 0 auto;
+}
+
+
+.redball {
+    width: 60px;
+    height: 60px;
+    background: #ff0000;
+    animation: ball 6s infinite;
+}
+
+@keyframes ball {
+
+    0%,
+    100% {
+        left: 50px;
+        width: 60px;
+        height: 60px;
+    }
+
+    4%,
+    54% {
+        width: 60px;
+        height: 60px;
+    }
+
+    10%,
+    60% {
+        width: 50px;
+        height: 70px;
+    }
+
+    20%,
+    70% {
+        width: 60px;
+        height: 60px;
+    }
+
+    34%,
+    90% {
+        width: 70px;
+        height: 50px;
+    }
+
+    41% {
+        width: 60px;
+        height: 60px;
+    }
+
+    50% {
+        left: 270px;
+        width: 60px;
+        height: 60px;
+    }
+}

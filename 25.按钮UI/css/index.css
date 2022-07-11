@@ -1,0 +1,64 @@
+* {
+	/* 初始化  清除页面元素的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 依旧弹性布局 ,让页面元素垂直+水平居中 这里居中的主要原理是通过主轴的交叉轴来操作 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #353b48;
+}
+.container {
+	/* 这个父元素设置了弹性布局 就能让子元素水平排列了,主要原理是让子元素在主轴水平排列,本期视频的代码比较简单,顺便给各位观众姥爷提一嘴 */
+	display: flex;
+	/* 这个代码可以改变主轴的方向 这次主轴方向向下了,元素就垂直排列 */
+	/* 设置了弹性布局的盒子的子元素是可以直接宽和高的 a标签是行内元素 不转为块级元素无法设置宽和高 但是只要是弹性项目 就可以设置 */
+	flex-direction: column;
+}
+.container a {
+	/* 相对定位 子绝父相 */
+	position: relative;
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	margin: 50px;
+	font-size: 30px;
+	color: #7f8;
+	/* 这个是取消文字下划线 */
+	text-decoration: none;
+	border: 5px solid #7f8;
+	/* 接下来就是四个盒子的颜色了 */
+	/* 刚才定义--i这个属性值可以通过var函数来调用 */
+	/* 刷一下就变了 哈哈 这块calc方法可以自动计算 var函数调用了刚刚我们给a设置的1-4这四个属性值,然后分别计算出了一个度数 hue-rotate这个属性是颜色滤镜 可以添加 不同的度数来改变颜色 最大值360deg 最小是就是0 原来的颜色 */
+	filter: hue-rotate(calc(var(--i) * 90deg));
+}
+.container a::before,
+.container a::after {
+	content: "";
+	position: absolute;
+	width: 15px;
+	height: 5px;
+	background-color: #353b48;
+	/* 这个属性是倾斜 写了一个值就表示在水平方向的倾斜 和skewX是一样的 */
+	transform: skew(50deg);
+	/* 设置一下过渡时间 */
+	transition: all 0.5s;
+}
+.container a::before {
+	top: -5px;
+	left: 10%;
+}
+.container a::after {
+	bottom: -5px;
+	right: 10%;
+}
+.container a:hover::before {
+	left: 80%;
+}
+.container a:hover::after {
+	right: 80%;
+}

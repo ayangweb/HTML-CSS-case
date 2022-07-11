@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+.tab_Content {
+  width: 700px;
+  height: 250px;
+  color: #607291;
+  background-color: #fff;
+  overflow: hidden;
+  input {
+    display: none;
+  }
+  label {
+    position: relative;
+    float: left;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 14px;
+    background-color: #e5e9ea;
+    transition: all 0.3s;
+    img {
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      margin-top: -5px;
+    }
+  }
+  label:hover {
+    background-color: #fff;
+  }
+  ul {
+    clear: both;
+    width: 3500px;
+    height: 210px;
+    background-color: #fff;
+    transition: all 0.5s;
+    li {
+      float: left;
+      list-style-type: none;
+      width: 700px;
+      height: 100%;
+      padding: 40px;
+      img {
+        width: 130px;
+        height: 130px;
+        float: left;
+        margin-right: 20px;
+      }
+      p {
+        // 首行缩进
+        text-indent: 2em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin-top: 10px;
+      }
+    }
+  }
+  #tab_list1:checked ~ ul {
+    margin-left: 0;
+  }
+  #tab_list2:checked ~ ul {
+    margin-left: -700px;
+  }
+  #tab_list3:checked ~ ul {
+    margin-left: -1400px;
+  }
+  #tab_list4:checked ~ ul {
+    margin-left: -2100px;
+  }
+  #tab_list5:checked ~ ul {
+    margin-left: -2800px;
+  }
+  #tab_list1:checked ~ label[for="tab_list1"] {
+    background-color: #fff;
+  }
+  #tab_list2:checked ~ label[for="tab_list2"] {
+    background-color: #fff;
+  }
+  #tab_list3:checked ~ label[for="tab_list3"] {
+    background-color: #fff;
+  }
+  #tab_list4:checked ~ label[for="tab_list4"] {
+    background-color: #fff;
+  }
+  #tab_list5:checked ~ label[for="tab_list5"] {
+    background-color: #fff;
+  }
+}

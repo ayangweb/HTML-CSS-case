@@ -1,0 +1,62 @@
+* {
+	/* 初始化 取消页面的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占浏览器总高 */
+	height: 100vh;
+	background-color: #222;
+}
+.loading {
+	/* 相对定位 */
+	position: relative;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	/* 只需要将其它的边的颜色设为透明就好 */
+	border: 3px solid transparent;
+	/* 我们需要隐藏其它三条边只显示一条边 */
+	border-top-color: #9370db;
+	animation: rotate 2s linear infinite;
+}
+.loading::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	left: 5px;
+	/* 这边也是一样 用伪元素做边框 */
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #ba55d3;
+	animation: rotate 3s linear infinite;
+}
+.loading::after {
+	content: "";
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	bottom: 15px;
+	left: 15px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #f0f;
+	/* 动画 时长 linear是匀速运动 infinite 是无限次运动 */
+	animation: rotate 1.5s linear infinite;
+}
+/* 下面定义一下动画 */
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		/* 顺时针旋转360度 */
+		transform: rotate(360deg);
+	}
+}

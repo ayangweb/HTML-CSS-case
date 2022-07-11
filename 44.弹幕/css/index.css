@@ -1,0 +1,67 @@
+* {
+	/* 清除所有元素自带的内外边距 */
+	padding: 0;
+	margin: 0;
+	/* 改变盒子模型 */
+	box-sizing: border-box;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 页面占浏览器可视区域的高度 */
+	height: 100vh;
+}
+.barrage {
+	width: 600px;
+}
+
+/* 视频部分 start */
+.barrage .video {
+	/* 相对定位 */
+	position: relative;
+	width: 100%;
+}
+.barrage .video video {
+	width: 100%;
+}
+.barrage .video canvas {
+	/* 绝对定位 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+/* 视频部分 end */
+
+/* 发送弹幕部分 start */
+.barrage .submit {
+	display: flex;
+	width: 100%;
+	height: 40px;
+}
+.barrage .submit input {
+	/* 清除form表单元素自带的轮廓 */
+	outline: 0;
+	width: 500px;
+	padding: 10px;
+	border: 1px solid #e7e7e7;
+}
+.barrage .submit button {
+	outline: 0;
+	border: 0;
+	width: 100px;
+	color: #fff;
+	background: linear-gradient(45deg, #016eff 70%, #1296ea);
+	/* 鼠标变小手 */
+	cursor: pointer;
+}
+/* 按钮点击后的样式 */
+.barrage .submit .btn_active {
+	color: #bbb;
+	background: #e7e7e7;
+	/* 鼠标变禁止点击状态 */
+	cursor: not-allowed;
+}
+/* 发送弹幕部分 end */

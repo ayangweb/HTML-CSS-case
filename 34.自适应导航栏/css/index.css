@@ -1,0 +1,172 @@
+* {
+	/* 初始化 清除元素原有的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 溢出隐藏 为了视频效果 可以不加 */
+	overflow: hidden;
+	/* 让页面占浏览器可视区域的高度 */
+	height: 100vh;
+	background-color: #e6f1f9;
+}
+.navbar {
+	/* 相对定位 */
+	position: relative;
+	/* 让元素的宽度占浏览器可视区域的宽度 */
+	width: 100vm;
+	height: 100px;
+	background-color: #e6f1f9;
+	/* 盒子阴影 */
+	box-shadow: 0 10px 50px #c6d9ed;
+}
+.navbar input {
+	/* 隐藏复选框 */
+	display: none;
+}
+.navbar label {
+	/* 绝对定位 */
+	position: absolute;
+	/* clac方法自动计算 让元素垂直居中 */
+	top: calc(50% - 25px);
+	right: 50px;
+	width: 50px;
+	height: 50px;
+	/* 圆角属性 */
+	border-radius: 6px;
+	/* 元素边框 */
+	border: 1px solid rgba(198, 217, 237, 0.3);
+	background-color: #e6f1f9;
+	/* 盒子阴影 多组值用逗号隔开 */
+	box-shadow: 5px 3px 6px 1px #c6d9ed, -5px -3px 6px 1px #fff;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+	transition: all 0.5s ease-out;
+}
+/* 先把label元素内的两条线定义一下 */
+.navbar label::before,
+.navbar label::after {
+	content: "";
+	/* 利用两个伪元素来定义 */
+	position: absolute;
+	left: 5px;
+	width: 40px;
+	height: 4px;
+	/* 让两条更佳圆滑 */
+	border-radius: 4px;
+	background-color: #042a41;
+	/* 收回来的动画刚好相反 */
+	transition: transform 0.3s ease-out, top 0.3s ease-out 0.3s;
+}
+/* 分别定义两条线的位置 */
+.navbar label::before {
+	top: calc(50% - 10px);
+}
+.navbar label::after {
+	top: calc(50% + 6px);
+}
+/* 然后定义label元素的动画效果 */
+/* 对了:checked是判断复选框是否被选中 + 是相邻兄弟选择器 找最近的下一次label元素 */
+.navbar input:checked + label {
+	/* 加了inset就是内部阴影 啥都不写就是默认的外部阴影(outset) */
+	box-shadow: 0 0 0 #fff, 0 0 0 #fff, 5px 3px 6px 1px #c6d9ed inset,
+		-5px -3px 6px 1px #fff inset;
+}
+.navbar input:checked + label::before {
+	top: calc(50% - 2px);
+	/* 逆时针旋转45度 */
+	transform: rotate(-45deg);
+	transition: top 0.3s ease-out, transform 0.3s ease-out 0.3s;
+}
+.navbar input:checked + label::after {
+	top: calc(50% - 2px);
+	/* 顺时针旋转45度 */
+	transform: rotate(45deg);
+	/* 定义过渡效果 */
+	/* 先执行top的变化 然后在.3s后执行transform转换 ease-out是从快速到慢速的过程 */
+	transition: top 0.3s ease-out, transform 0.3s ease-out 0.3s;
+}
+/* 我们先写移动端的导航栏样式 start */
+.navbar ul {
+	position: relative;
+	top: 100px;
+	width: 100%;
+	/* 元素的不透明度 为0 就是完全透明 */
+	opacity: 0;
+	/* 让元素缩放到0 就是直接隐藏 */
+	transform: scaleY(0);
+	/* 这个属性设置元素缩放的中心点 设置到了最上面的中间位置 */
+	transform-origin: 50% 0;
+	transition: all 0.5s ease-out;
+}
+.navbar ul li {
+	list-style: none;
+	width: 100%;
+	height: 66px;
+}
+.navbar ul li a {
+	/* a标签是行内元素 不设置为块级或者行内块就没法设置宽高 */
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 66px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	/* 取消文字下划线 */
+	text-decoration: none;
+	color: #042a41;
+	border: 1px solid rgba(198, 217, 237, 0.3);
+	box-shadow: 0 15px 20px #c6d9ed;
+	transition: all 0.3s ease-out;
+}
+.navbar ul li a:hover {
+	box-shadow: 0 0 0 #fff, 0 15px 20px #c6d9ed inset;
+}
+.navbar input:checked ~ ul {
+	opacity: 1;
+	transform: scaleY(1);
+}
+/* 我们先写移动端的导航栏样式 end */
+
+/* 继续写pc端的样式 start */
+/* 就不演示了 直接看成品 */
+/* 媒体查询 如果页面的宽度到了992px之后就执行里面的代码 */
+@media (min-width: 992px) {
+	.navbar label {
+		/* pc端 lable元素隐藏 */
+		display: none;
+	}
+	.navbar ul {
+		/* 让元素到原来的默认的定位属性 */
+		/* 这样上面写的top属性不生效 */
+		position: static;
+		/* 弹性布局 */
+		display: flex;
+		/* 让元素平均分配宽度 */
+		justify-content: space-around;
+		/* 让元素垂直居中 */
+		align-items: center;
+		width: 1200px;
+		height: 100%;
+		margin: 0 auto;
+		/* 这里这着两个值是为了避免复选框未选中状态下 ul会继承移动端的属性 所以这里替换一下 */
+		opacity: 1;
+		transform: scaleY(1);
+	}
+	.navbar ul li {
+		text-align: center;
+	}
+	.navbar ul li a {
+		/* 让元素还原到原来的行内属性 这样宽高就不生效 */
+		display: inline;
+		padding: 20px 40px;
+		border-radius: 60px;
+		box-shadow: 5px 3px 6px 1px #c6d9ed, -5px -3px 6px 1px #fff;
+	}
+	.navbar ul li a:hover {
+		box-shadow: 0 0 0 #fff, 0 0 0 #fff, 5px 3px 6px 1px #c6d9ed inset,
+			-5px -3px 6px 1px #fff inset;
+	}
+}
+/* 继续写pc端的样式 end */

@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+}
+
+h1 {
+    position: relative;
+    /* 1rem=16px */
+    font-size: 8rem;
+    color: #333;
+}
+
+h1:after {
+    content: 'SPOTLIGHT';
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 透明色 */
+    color: transparent;
+    background-image: linear-gradient(to right, #c23616, #192a56, #00d2d3, yellow, 
+    #6d214f, #2e86de,#4cd137, #e84118);
+    /* 背景绘制区域，值为text时，给文字设置镂空效果，前提必须是文字颜色为透明色 */
+    background-clip: text;
+    /* 谷歌浏览器私有属性 */
+    -webkit-background-clip: text;
+    /* 使用裁切方法创建元素的可显示区域 circle表示裁切一个圆形 100px表示圆的直径 0%和50%表示圆心位置 直径和圆心两组值中间用at隔开*/
+    clip-path: circle(100px at 0% 50%);
+    -webkit-clip-path: circle(100px at 0% 50%);
+    animation: move 5s infinite;
+}
+
+@keyframes move {
+    0% {
+        clip-path: circle(100px at 0% 50%);
+        -webkit-clip-path: circle(100px at 0% 50%);
+    }
+
+    50% {
+        clip-path: circle(100px at 100% 50%);
+        -webkit-clip-path: circle(100px at 100% 50%);
+    }
+
+    100% {
+        clip-path: circle(100px at 0% 50%);
+        -webkit-clip-path: circle(100px at 0% 50%);
+    }
+}

@@ -1,0 +1,255 @@
+/* 在根选择器定义颜色 */
+:root {
+	--bgColor: #ebf4ff;
+	--badColor: #ff5722;
+	--okColor: #ff9800;
+	--goodColor: #36d896;
+	--greatColor: #3f51b5;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面占浏览器可视区域的总高度 */
+	height: 100vh;
+	background-color: var(--bgColor);
+}
+
+.container {
+	width: 530px;
+	height: 160px;
+	padding: 30px;
+	border-radius: 20px;
+	background-color: #fff;
+	/* 阴影 */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.container h1 {
+	font-size: 18px;
+	color: var(--greatColor);
+}
+
+.container .appraise {
+	display: flex;
+	/* 元素两端对齐 */
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+	margin-top: 30px;
+}
+
+.container .appraise .icon {
+	overflow: hidden;
+	width: 40px;
+	height: 40px;
+}
+
+.container .appraise .icon .icon-list {
+	/* 取消li前面的小黑点 */
+	list-style: none;
+	/* 过渡看自己加不加 */
+	transition: all 0.5s;
+}
+
+.container .appraise .icon .icon-list li {
+	/* 溢出隐藏 */
+	overflow: hidden;
+	/* 相对定位 */
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	border: 4px solid var(--badColor);
+}
+
+.container .appraise .icon .icon-list li::before,
+.container .appraise .icon .icon-list li::after {
+	content: "";
+	/* 绝对定位 */
+	position: absolute;
+}
+
+/* 封装一下嘴的样式 start */
+.container .appraise .icon .icon-list li .mouth {
+	position: absolute;
+	left: 6px;
+	width: 20px;
+	height: 16px;
+	border-radius: 50%;
+}
+.container .appraise .icon .icon-list li .mouth::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 8px;
+	background-color: #fff;
+}
+/* 封装一下嘴的样式 end */
+
+/* 表情1 start */
+/* 眉毛 start */
+.container .appraise .icon .icon-list .icon-bad .eyebrow,
+.container .appraise .icon .icon-list .icon-bad .eyebrow::before {
+	/* 绝对定位 */
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 8px;
+	height: 3px;
+	/* 圆角 */
+	border-radius: 3px;
+	background-color: var(--badColor);
+	/* 旋转 */
+	transform: rotate(-12deg);
+}
+.container .appraise .icon .icon-list .icon-bad .eyebrow::before {
+	content: "";
+	top: 0;
+	left: 14px;
+	transform: rotate(20deg);
+}
+/* 眉毛 end */
+/* 眼睛 start */
+.container .appraise .icon .icon-list .icon-bad::before {
+	top: 10px;
+	left: 8px;
+	border-radius: 50%;
+	border: 2px solid var(--badColor);
+	box-shadow: 12px 0 0 var(--badColor);
+}
+/* 眼睛 end */
+/* 嘴 start */
+.container .appraise .icon .icon-list .icon-bad .mouth {
+	bottom: -4px;
+	border: 2px solid var(--badColor);
+}
+.container .appraise .icon .icon-list .icon-bad .mouth::before {
+	left: -2px;
+	bottom: -2px;
+}
+/* 嘴 end */
+/* 表情1 end */
+
+/* 表情2 start */
+.container .appraise .icon .icon-list .icon-ok {
+	border-color: var(--okColor);
+}
+/* 眼睛 start */
+.container .appraise .icon .icon-list .icon-ok::before {
+	top: 6px;
+	left: 6px;
+	border-radius: 50%;
+	border: 3px solid var(--okColor);
+	box-shadow: 14px 0 0 var(--okColor);
+}
+/* 眼睛 end */
+/* 嘴 start */
+.container .appraise .icon .icon-list .icon-ok::after {
+	bottom: 6px;
+	right: 6px;
+	width: 12px;
+	height: 3px;
+	border-radius: 3px;
+	background-color: var(--okColor);
+}
+/* 嘴 end */
+/* 表情2 end */
+
+/* 表情3 start */
+.container .appraise .icon .icon-list .icon-good {
+	border-color: var(--goodColor);
+}
+/* 眼睛 start */
+.container .appraise .icon .icon-list .icon-good::before {
+	top: 8px;
+	left: 6px;
+	border-radius: 50%;
+	border: 3px solid var(--goodColor);
+	box-shadow: 14px 0 0 var(--goodColor);
+	/* 眼睛被堵了 提高眼睛的层叠顺序 */
+	z-index: 66;
+}
+/* 眼睛 end */
+/* 嘴 start */
+.container .appraise .icon .icon-list .icon-good .mouth {
+	bottom: 4px;
+	border: 2px solid var(--goodColor);
+}
+.container .appraise .icon .icon-list .icon-good .mouth::before {
+	left: -2px;
+	top: -2px;
+}
+/* 嘴 end */
+/* 表情3 end */
+
+/* 表情4 start */
+.container .appraise .icon .icon-list .icon-great {
+	border-color: var(--greatColor);
+}
+/* 眼睛 start */
+.container .appraise .icon .icon-list .icon-great::before,
+.container .appraise .icon .icon-list .icon-great::after {
+	top: 6px;
+	left: 6px;
+	width: 9px;
+	height: 9px;
+	background-color: var(--greatColor);
+	/* 绘制五角星 */
+	clip-path: polygon(
+		50% 0,
+		61% 35%,
+		98% 35%,
+		68% 57%,
+		79% 91%,
+		50% 70%,
+		21% 91%,
+		32% 57%,
+		2% 35%,
+		39% 35%
+	);
+	z-index: 88;
+}
+.container .appraise .icon .icon-list .icon-great::after {
+	left: 17px;
+}
+/* 眼睛 end */
+/* 嘴 start */
+.container .appraise .icon .icon-list .icon-great .mouth {
+	bottom: 4px;
+	background-color: var(--greatColor);
+}
+/* 嘴 end */
+/* 表情4 end */
+
+/* 滑动条 start */
+.container .appraise input {
+	/* 取消元素的原有样式 */
+	-webkit-appearance: none;
+	width: 390px;
+	height: 16px;
+	border-radius: 16px;
+}
+/* 滑动条 end */
+
+/* 滑动块 start */
+.container .appraise input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 7px solid #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+/* 滑动块 end */

@@ -1,0 +1,108 @@
+* {
+	/* 初始化 取消页面的内外边距 */
+	padding: 0;
+	margin: 0;
+	/* 盒子模型 */
+	box-sizing: border-box;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占屏幕总高 */
+	height: 100vh;
+}
+.swiper {
+	/* 相对定位 */
+	position: relative;
+	width: 857px;
+	height: 441px;
+	overflow: hidden;
+}
+input {
+	display: none;
+}
+label {
+	position: absolute;
+	bottom: 30px;
+	width: 20px;
+	height: 20px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	background-color: #fff;
+}
+label[for="btn1"] {
+	left: 35%;
+}
+label[for="btn2"] {
+	left: 40%;
+}
+label[for="btn3"] {
+	left: 45%;
+}
+label[for="btn4"] {
+	left: 50%;
+}
+label[for="btn5"] {
+	left: 55%;
+}
+label[for="btn6"] {
+	left: 60%;
+}
+label[for="btn7"] {
+	left: 65%;
+}
+ul {
+	/* 让li水平排列 */
+	display: flex;
+	/* 自动计算宽度 */
+	width: calc(857px * 7);
+	/* 过渡时间 */
+	transition: all 0.5s;
+}
+li {
+	list-style-type: none;
+}
+#btn1:checked ~ ul {
+	margin-left: 0;
+}
+#btn2:checked ~ ul {
+	margin-left: -857px;
+}
+#btn3:checked ~ ul {
+	margin-left: calc(-857px * 2);
+}
+#btn4:checked ~ ul {
+	margin-left: calc(-857px * 3);
+}
+#btn5:checked ~ ul {
+	margin-left: calc(-857px * 4);
+}
+#btn6:checked ~ ul {
+	margin-left: calc(-857px * 5);
+}
+#btn7:checked ~ ul {
+	margin-left: calc(-857px * 6);
+}
+#btn1:checked ~ label[for="btn1"] {
+	background-color: #f00;
+}
+#btn2:checked ~ label[for="btn2"] {
+	background-color: #f00;
+}
+#btn3:checked ~ label[for="btn3"] {
+	background-color: #f00;
+}
+#btn4:checked ~ label[for="btn4"] {
+	background-color: #f00;
+}
+#btn5:checked ~ label[for="btn5"] {
+	background-color: #f00;
+}
+#btn6:checked ~ label[for="btn6"] {
+	background-color: #f00;
+}
+#btn7:checked ~ label[for="btn7"] {
+	background-color: #f00;
+}

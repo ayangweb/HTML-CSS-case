@@ -1,0 +1,164 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* 弹性布局 页面元素水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面占浏览器总高 */
+    height: 100vh;
+    background-color: #000;
+}
+
+ul {
+    /* 相对定位 */
+    position: relative;
+    display: flex;
+    height: 200px;
+}
+
+ul::after {
+    content: '爱心怦怦跳';
+    /* 绝对定位 子绝父相 */
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    color: darkturquoise;
+    font-size: 30px;
+    font-weight: 700;
+    /* 上期视频已经讲过了，不明白可以看上期视频 */
+    transform: translate(-50%, -600%);
+}
+
+li {
+    /* 去除项目符号（黑点） */
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+li:nth-child(1) {
+    background-color: red;
+    animation: love1 5s 0s infinite;
+}
+
+li:nth-child(2) {
+    background-color: darkturquoise;
+    animation: love2 5s 0.2s infinite;
+}
+
+li:nth-child(3) {
+    background-color: darksalmon;
+    animation: love3 5s 0.4s infinite;
+}
+
+li:nth-child(4) {
+    background-color: deeppink;
+    animation: love4 5s 0.6s infinite;
+}
+
+li:nth-child(5) {
+    background-color: yellow;
+    animation: love5 5s 0.8s infinite;
+}
+
+li:nth-child(6) {
+    background-color: deeppink;
+    animation: love4 5s 1s infinite;
+
+}
+
+li:nth-child(7) {
+    background-color: darksalmon;
+    animation: love3 5s 1.2s infinite;
+}
+
+li:nth-child(8) {
+    background-color: darkturquoise;
+    animation: love2 5s 1.4s infinite;
+}
+
+li:nth-child(9) {
+    background-color: red;
+    animation: love1 5s 1.6s infinite;
+}
+
+@keyframes love1 {
+
+    30%,
+    50% {
+        height: 60px;
+        transform: translateY(-30px);
+    }
+
+    70%,
+    100% {
+        height: 20px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes love2 {
+
+    30%,
+    50% {
+        height: 125px;
+        transform: translateY(-60px);
+    }
+
+    70%,
+    100% {
+        height: 20px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes love3 {
+
+    30%,
+    50% {
+        height: 160px;
+        transform: translateY(-75px);
+    }
+
+    70%,
+    100% {
+        height: 20px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes love4 {
+
+    30%,
+    50% {
+        height: 180px;
+        transform: translateY(-60px);
+    }
+
+    70%,
+    100% {
+        height: 20px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes love5 {
+
+    30%,
+    50% {
+        height: 200px;
+        transform: translateY(-45px);
+    }
+
+    70%,
+    100% {
+        height: 20px;
+        transform: translateY(0);
+    }
+}

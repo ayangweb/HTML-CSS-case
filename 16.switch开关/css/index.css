@@ -1,0 +1,64 @@
+* {
+	/* 初始化 取消页面的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占浏览器总高 */
+	height: 100vh;
+}
+label {
+	/* 溢出隐藏 让多余部分隐藏起来 */
+	overflow: hidden;
+	position: relative;
+	width: 150px;
+	height: 76px;
+	border-radius: 38px;
+	background-color: #e9e9e9;
+}
+/* 现在复选框还在我们得把他隐藏起来 */
+label input {
+	/* 这里我们用了visibility 来隐藏元素 因为这个属性可以让元素隐藏起来 并且保留其位置 所以当我们再次让after伪元素和before伪元素显示的时候就还有位置在 */
+	visibility: hidden;
+	/* 在加一个小手的样式 我们就大功告成  嘿嘿  早安，打工人 */
+	cursor: pointer;
+}
+label input::after {
+	/* 设置白色的球球 */
+	/* 这个属性的默认值 */
+	visibility: visible;
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 66px;
+	height: 66px;
+	border-radius: 50%;
+	background-color: #fff;
+	/* 加一个过渡时间 不然移动太快 */
+	transition: all 0.5s;
+}
+/* 让复选框选中之后球球往右移动 */
+label input:checked::after {
+	transform: translateX(74px);
+}
+/* 接下来我们做复选框选中之后的背景颜色的改变 */
+label input::before {
+	visibility: visible;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* 还是一样加一个过渡时间 */
+	transition: all 0.5s;
+}
+/* 我们要的是选中之后背景颜色改变 所以就让复选框选中 后before伪元素背景颜色发生变化 */
+label input:checked::before {
+	background-color: #65c466;
+}

@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+.tab_Content {
+  width: 700px;
+  height: 250px;
+  color: #607291;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.tab_Content input {
+  display: none;
+}
+
+.tab_Content label {
+  float: left;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+  background-color: #e5e9ea;
+  transition: all 0.3s;
+}
+
+.tab_Content label img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+}
+
+.tab_Content label:hover {
+  background-color: #fff;
+}
+
+.tab_Content ul {
+  clear: both;
+  width: 3500px;
+  height: 210px;
+  transition: all 0.5s;
+}
+
+.tab_Content ul li {
+  float: left;
+  list-style-type: none;
+  width: 700px;
+  height: 100%;
+  padding: 40px;
+}
+
+.tab_Content ul li img {
+  float: left;
+  width: 130px;
+  height: 130px;
+  margin-right: 20px;
+}
+
+.tab_Content ul li p {
+  text-indent: 2em;
+  /* 文字溢出隐藏 */
+  overflow: hidden;
+  /* 超出内容显示为省略号 */
+  text-overflow: ellipsis;
+  /* 将对象作为弹性伸缩盒子模型显示 */
+  display: -webkit-box;
+  /* 从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式） */
+  -webkit-box-orient: vertical;
+  /* 这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。 */
+  -webkit-line-clamp: 3;
+  margin-top: 20px;
+}
+
+.tab_Content #tab_list1:checked~ul {
+  margin-left: 0;
+}
+
+.tab_Content #tab_list2:checked~ul {
+  margin-left: -700px;
+}
+
+.tab_Content #tab_list3:checked~ul {
+  margin-left: -1400px;
+}
+
+.tab_Content #tab_list4:checked~ul {
+  margin-left: -2100px;
+}
+
+.tab_Content #tab_list5:checked~ul {
+  margin-left: -2800px;
+}
+
+.tab_Content #tab_list1:checked~label[for="tab_list1"] {
+  background-color: #fff;
+}
+
+.tab_Content #tab_list2:checked~label[for="tab_list2"] {
+  background-color: #fff;
+}
+
+.tab_Content #tab_list3:checked~label[for="tab_list3"] {
+  background-color: #fff;
+}
+
+.tab_Content #tab_list4:checked~label[for="tab_list4"] {
+  background-color: #fff;
+}
+
+.tab_Content #tab_list5:checked~label[for="tab_list5"] {
+  background-color: #fff;
+}

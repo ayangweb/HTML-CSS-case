@@ -1,0 +1,84 @@
+// js案例就用scss 为了节省时间 基本不写css注释了 想看css源码自己下载哦 每期视频源码都在简介
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	margin: 50px 0 0 200px;
+	h2 {
+		margin-bottom: 20px;
+	}
+	.list {
+		list-style: none;
+		display: flex;
+		// 弹性项目在盒子内放不下自动换行
+		flex-wrap: wrap;
+		li {
+			position: relative;
+			width: 150px;
+			height: 150px;
+			margin: 0 20px 20px 0;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+			.close {
+				display: none;
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				font-size: 50px;
+				font-weight: 100;
+				color: #dedede;
+				transform: translate(-50%, -56%);
+				&:hover {
+					color: #fff;
+				}
+			}
+			&.file {
+				width: 150px;
+				height: 150px;
+				border: 1px dashed #ccc;
+				input {
+					opacity: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+				}
+				&::before {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					content: "+";
+					font-size: 50px;
+					font-weight: 100;
+					color: #dedede;
+					transform: translate(-50%, -56%);
+				}
+				&:hover {
+					border-color: #5192fe;
+				}
+			}
+			&:not(:last-child)::before {
+				display: none;
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.4);
+			}
+			&:not(:last-child):hover {
+				&::before {
+					display: block;
+				}
+				.close {
+					display: block;
+				}
+			}
+		}
+	}
+}

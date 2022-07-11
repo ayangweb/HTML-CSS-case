@@ -1,0 +1,96 @@
+* {
+	/* 初始化 清除页面元素的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占浏览器可视区域高度总高 */
+	height: 100vh;
+	background-color: #eee;
+}
+/* 由于是引入的连接第三方字体图标库  网络延迟比较大 所以刷新的时候就迟迟不能出来 */
+.container {
+	/* 这里的弹性布局 让元素能够水平排列 并且能够让a这个行内元素设置宽度和高度 */
+	display: flex;
+}
+.container .btn {
+	/* 溢出隐藏 */
+	overflow: hidden;
+	/* 相对定位 */
+	position: relative;
+	width: 90px;
+	height: 90px;
+	text-align: center;
+	margin: 0 10px;
+	border-radius: 25px;
+	background-color: #fff;
+	/* 盒子阴影 */
+	box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+}
+.container .fa {
+	/* 字体图标可以直接使用字体大小来设置大小 */
+	font-size: 38px;
+	/* 缩放0.8倍 */
+	transform: scale(0.8);
+	/* 行高 让这个字体图标垂直居中于盒子内 */
+	line-height: 90px;
+	/* 设置一下过渡 */
+	/* 第三个值是贝塞尔曲线 让运动曲线有无限可能 可以到官网自行探索 https://cubic-bezier.com/ */
+	transition: all 0.4s cubic-bezier(0.31, -0.1, 0.43, 1.59);
+}
+.container .btn::before {
+	content: "";
+	/* 绝对定位 */
+	position: absolute;
+	top: 90%;
+	left: -110%;
+	width: 120%;
+	height: 120%;
+	/* 顺时针旋转45度 */
+	transform: rotate(45deg);
+	transition: all 0.4s cubic-bezier(0.31, -0.1, 0.43, 1.59);
+}
+.container .btn .fa-facebook {
+	color: #3b5988;
+}
+.container .btn_facebook::before {
+	background-color: #3b5988;
+}
+.container .btn .fa-twitter {
+	color: #00aff0;
+}
+.container .btn_twitter::before {
+	background-color: #00aff0;
+}
+.container .btn .fa-google {
+	color: #dc4a38;
+}
+.container .btn_google::before {
+	background-color: #dc4a38;
+}
+
+.container .btn .fa-instagram {
+	color: #bf00ff;
+}
+.container .btn_instagram::before {
+	background-color: #bf00ff;
+}
+.container .btn .fa-pinterest {
+	color: #c00;
+}
+.container .btn_pinterest::before {
+	background-color: #c00;
+}
+.container .btn:hover::before {
+	top: -10%;
+	left: -10%;
+}
+.container .btn:hover .fa {
+	color: #fff;
+	/* 鼠标移入 恢复到原来的大小 */
+	transform: scale(1);
+}

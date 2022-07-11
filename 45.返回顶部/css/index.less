@@ -1,0 +1,136 @@
+// 利用less写效果
+* {
+	// 清除所有元素的内外边距
+	padding: 0;
+	margin: 0;
+	// 改变盒子模型的计算方式
+	box-sizing: border-box;
+	// 现在已经完成了回到顶部效果 但是有点快 没有那么平滑
+	// 该属性默认值auto 就是滚动条立即滚动
+	// 而smooth属性值就是在一个规定的时间里回到顶部, 已经默认约定好了
+	scroll-behavior: smooth;
+	// ok 本期视频就到这里了 给个三连支持一下吧
+}
+// 用了less的插件 Easy less 然后写点配置就可以了 自动压缩
+.container {
+	// 最后写返回顶部
+	a {
+		// 利用粘性定位 完成效果 绝对定位和固定定位的结合体
+		position: sticky;
+		// 然后往下滑动到写好的像素 就会出现了
+		top: -374px;
+		// 目前会占据位置 现在就不会占据位置了 没有top其实位置在屏幕外面 但是top: 0 时 变成了固定定位 所以不占据位置
+		margin-top: -174px;
+		// 右浮动元素 设置浮动后display: block;就可以不要了 浮动元素也是会转为块级元素了
+		float: right;
+		width: 150px;
+		height: 174px;
+		// 前面打/ 是去这个文件夹最外层开始 图片来源于B站
+		background: url("/images/back.png") no-repeat;
+		background-position: -600px 0;
+		// 层叠顺序默认为1 变大一点就到上面了
+		z-index: 999;
+		// 利用2d位移 让元素到下面 现在元素已经出去了 可以看到现在是在底下了 我们在加点像素就可以让它出屏幕
+		transform: translateY(calc(100vh + 200px));
+		&:hover {
+			// 我们用步长解决问题
+			// 一共五张图片位置 走五次就刚好了
+			animation: back 0.5s steps(5) infinite;
+		}
+	}
+	// 先做动画
+	@keyframes back {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: -750px 0;
+		}
+	}
+	h1 {
+		margin: 20px 0;
+		text-align: center;
+	}
+	// 歌单列表
+	.musicList {
+		// 弹性布局
+		display: flex;
+		// 允许元素在一行容不下时换行
+		flex-wrap: wrap;
+		width: 1200px;
+		// 让元素居中于父元素内
+		margin: 0 auto;
+		// 去除小黑点
+		list-style: none;
+		li {
+			width: 200px;
+			// 加个透明边框 使各个元素有间距
+			border: 10px solid transparent;
+			.img {
+				// 溢出隐藏
+				overflow: hidden;
+				// 相对定位
+				position: relative;
+				width: 100%;
+				// 边框占据了20px
+				height: 180px;
+				// 鼠标移入变小手
+				cursor: pointer;
+				> img {
+					width: 100%;
+					// 现在加过渡
+					transition: all 0.5s;
+				}
+				// 蒙层
+				.mask {
+					// 绝对定位
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					transition: all 0.5s;
+					img {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 50px;
+						// 元素向左和向上移动自身宽度和高度的一半, 刚好到了中间
+						transform: translate(-50%, -50%);
+						// 不透明度为0 刚好变成全透明
+						opacity: 0;
+						transition: all 0.5s;
+					}
+				}
+				// 现在做具体效果
+				&:hover {
+					// 鼠标移入后图片放大原尺寸的1.07倍
+					> img {
+						transform: scale(1.07);
+					}
+					.mask {
+						background-color: rgba(0, 0, 0, 0.2);
+						img {
+							opacity: 1;
+							// 本来原有的转换属性要写上 不然这块就不居中了
+							transform: translate(-50%, -50%) scale(1.2);
+						}
+					}
+				}
+			}
+			.title {
+				margin: 10px 0 5px;
+				font-size: 14px;
+				cursor: pointer;
+				transition: all 0.5s;
+				&:hover {
+					color: #31c27c;
+				}
+			}
+			.playCount {
+				color: #999;
+				font-size: 13px;
+			}
+		}
+	}
+}

@@ -1,0 +1,102 @@
+* {
+	/* 页面初始化 清除所有元素的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	background-color: #111;
+}
+.container {
+	/* 绝对定位 */
+	position: absolute;
+	/* 现在我们如果想让改元素居中到页面中 有两种方法,我都写一下 你们进行参考*/
+	/* 第一种 */
+	/* calc可以自动计算数值 页面的50% - 盒子宽度或者高度的一半就正好到中间了 这里为什么我要减去120px呢,明明宽度和高度只有200px 一半应该是100px , 哈哈, 当然我们还给盒子加了20px的内边距 也就撑大了盒子 盒子宽度/高度就成了240px*/
+	/* top: calc(50% - 120px);
+	left: calc(50% - 120px); */
+	width: 200px;
+	height: 200px;
+	padding: 20px;
+	/* 圆形 */
+	border-radius: 50%;
+	/* 第二种 */
+	top: 50%;
+	left: 50%;
+	/* 就是先让盒子走页面的50% */
+	/* 然后用转换属性的2D位移 让元素走自身的宽度/高度的一半,利用这个属性就免去了计算 可以更快更方便的让元素到中间 */
+	transform: translate(-50%, -50%);
+	/* 背景渐变色 旋转150度进行着色 transparent是透明色 */
+	background-image: linear-gradient(
+		150deg,
+		#5f2093,
+		transparent,
+		transparent
+	);
+	/* 动画  名称 时长  第三个属性值是贝塞尔曲线(让动画的运动轨迹有很多可能性),有兴趣自己研究一下(https://cubic-bezier.com/) infinite是无限次播放 */
+	animation: move 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+.container::before,
+.container::after {
+	content: "";
+	/* 相对定位 会以自身的当前位置进行位移 */
+	top: -185px;
+	left: 65px;
+	position: relative;
+	/* 伪元素是行内元素 需要转为块级来设置宽和高 */
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.container::before {
+	width: 35px;
+	top: 40px;
+	left: 30px;
+	/* 逆时针旋转40度 */
+	transform: rotate(-40deg);
+}
+/* 行星 start */
+.container .planet {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	/* 同上 */
+	background-image: linear-gradient(150deg, #a37dce, #5f2093, transparent);
+}
+/* 行星 end */
+/* 环绕的轨道 start */
+.container .planet::before,
+.container .planet::after {
+	content: "";
+	position: absolute;
+	top: 90px;
+	left: -40px;
+	width: 300px;
+	height: 40px;
+	border-radius: 50%;
+	border: 10px solid #c099ef;
+	/* 先让两个伪元素的上边框颜色都为透明色 */
+	border-top-color: transparent;
+	/* 逆时针旋转20度 */
+	transform: rotate(-20deg);
+}
+.container .planet::after {
+	border-top-color: #c099ef;
+	/* 这个属性是堆叠顺序 只针对定位元素有效 这里随便写个负值就可以对于的部分就会被覆盖掉 */
+	z-index: -99;
+}
+/* 环绕的轨道 end */
+
+/* 做一下漂浮的动画 */
+@keyframes move {
+	0% {
+		top: 50%;
+	}
+	50% {
+		top: 45%;
+	}
+	100% {
+		top: 50%;
+	}
+}

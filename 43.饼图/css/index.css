@@ -1,0 +1,122 @@
+/* 在根选择器中设置两个自定义属性 */
+:root {
+	/* --color: #ee6666; */
+	/* --percentage: 25%; */
+}
+/* css3 有一个新特性 @property 可以解决这个问题 它的出现 又让css 变强了 */
+/* 其实和根组件自定义属性一样 只是多了一些属性 */
+/* --color 依旧时自定义属性 */
+/* syntax 是 自定义属性的语法规则 可以理解为自定义属性的类型 */
+/* inherits 是否允许继承 */
+/* initial-value 默认值 */
+/* @property 关于该特性 置顶评论会放它的学习链接 */
+@property --color {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: #ee6666;
+}
+@property --percentage {
+	syntax: "<percentage>";
+	inherits: false;
+	initial-value: 25%;
+}
+* {
+	/* 老样子 清除所有元素的自带的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让页面元素垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面始终占浏览器可视区域的高度 */
+	height: 100vh;
+}
+.container {
+	width: 500px;
+	text-align: center;
+}
+.container input {
+	/* 隐藏单选框 */
+	display: none;
+}
+.container label {
+	margin: 20px;
+	font-size: 14px;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+.container label::before {
+	content: "";
+	/* before伪元素默认值行内元素 设置为行内块 设置宽高 */
+	display: inline-block;
+	width: 20px;
+	height: 12px;
+	margin-right: 5px;
+	border-radius: 3px;
+	/* 自定义属性用var函数调用 */
+	background-color: var(--color);
+}
+/* 分别设置其它三个label before伪元素的背景颜色 */
+.container label[for="option2"]::before {
+	/* 改变自定义属性的值即可 */
+	--color: #fac858;
+}
+.container label[for="option3"]::before {
+	/* 改变自定义属性的值即可 */
+	--color: #91cc75;
+}
+.container label[for="option4"]::before {
+	/* 改变自定义属性的值即可 */
+	--color: #73c0de;
+}
+/* 先顺便做好label被选中是的样式 */
+/* +相邻兄弟选择器 只会找被选择单选框的紧挨的label */
+.container input:checked + label {
+	font-weight: 700;
+	color: var(--color);
+}
+.container #option2:checked + label {
+	/* 这里写color 和 --color 都可以 为了保证一致性吧 写成--color吧 */
+	--color: #fac858;
+}
+.container #option3:checked + label {
+	--color: #91cc75;
+}
+.container #option4:checked + label {
+	--color: #73c0de;
+}
+
+/* ok 现在可以写饼图了 */
+.container .pie {
+	width: 300px;
+	height: 300px;
+	margin: 30px auto;
+	border-radius: 50%;
+	/* 这里我们改变像视频演示的状态需要用到锥形渐变 */
+	/* 从第一个值开始计算 买两对值就是一个锥形区域的显示区域 前两个值的角度分别是0 和 25% 所以就占了 1/4 后面的透明色从25% ~ 100% 了 */
+	background: conic-gradient(
+		var(--color) 0,
+		var(--color) var(--percentage),
+		transparent var(--percentage),
+		transparent 100%
+	);
+	/* 很显然 不行 那么 我们如何解决呢 */
+	/* 现在可以看到颜色已经有过渡效果了 我们继续改造角度就额可以了 */
+	/* 这就好起来了 哈哈哈  */
+	transition: --color 0.4s ease, --percentage 0.4s ease;
+}
+/* 现在可以验证一下背景是否支持transition了 */
+.container #option2:checked ~ .pie {
+	--color: #fac858;
+	--percentage: 50%;
+}
+.container #option3:checked ~ .pie {
+	--color: #91cc75;
+	--percentage: 75%;
+}
+.container #option4:checked ~ .pie {
+	--color: #73c0de;
+	--percentage: 100%;
+}

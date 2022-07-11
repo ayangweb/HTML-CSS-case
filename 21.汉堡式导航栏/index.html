@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HTML+CSS 汉堡式菜单</title>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<div class="hamburger_menu">
+			<input type="checkbox" id="toggle" />
+			<!-- 点击文字选择了复选框,主要是靠label标签的for属性,for属性对应的是复选框的id属性,值相等就可以通过label标签选择到复选框 -->
+			<label for="toggle">
+				<div class="hamburger_container">
+					<span></span>
+					<span></span>
+				</div>
+			</label>
+			<ul>
+				<li>点赞</li>
+				<li>投币</li>
+				<li>收藏</li>
+				<li>关注</li>
+			</ul>
+		</div>
+	</body>
+</html>

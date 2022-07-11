@@ -1,0 +1,57 @@
+* {
+    /* 初始化 取消页面元素的内外边距 */
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* 弹性布局 让页面元素垂直+水平居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 让页面始终占浏览器总高 */
+    height: 100vh;
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+
+.box {
+    /* 相对定位 */
+    position: relative;
+    width: 300px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    /* 背景渐变色 */
+    cursor: pointer;
+    background-image: linear-gradient(to right, #fb7299, #ff5c7c);
+    transition: .5s;
+}
+
+.box::after {
+    content: '';
+    /* 绝对定位 */
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 600px;
+    height: 70px;
+    /* 背景渐变色 */
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, .3), rgba(0, 0, 0, 0));
+    /* 让元素旋转-45度 位置距离距离左边不变化，距离下面走360像素的距离 */
+    transform: rotate(-45deg) translate(0, -360px);
+}
+
+.box:hover::after {
+    /* 过渡时长 */
+    transition: 1s;
+    transform: rotate(-45deg) translate(0, 100px);
+}
+
+.box:hover {
+    margin-top: -20px;
+    /* 盒子阴影 */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
+}

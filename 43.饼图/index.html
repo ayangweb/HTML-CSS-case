@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HTML+CSS 饼状图</title>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!-- name属性用来将单选框分组 属性值相同浆糊被分为一组 -->
+			<!-- checked设置默认被选中的单选框 -->
+			<!-- 现在我们可以使用label 选中单选框 是因为label的for属性值和单选框的id属性值相同的时候 我们就可以这样做了 -->
+			<input type="radio" name="option" id="option1" checked />
+			<label for="option1">25%</label>
+			<input type="radio" name="option" id="option2" />
+			<label for="option2">50%</label>
+			<input type="radio" name="option" id="option3" />
+			<label for="option3">75%</label>
+			<input type="radio" name="option" id="option4" />
+			<label for="option4">100%</label>
+			<div class="pie"></div>
+		</div>
+	</body>
+</html>

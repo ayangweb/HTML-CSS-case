@@ -1,0 +1,62 @@
+* {
+    /* 初始化 取消页面的内外边距 */
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    /* 弹性布局 使页面元素水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 使页面占屏幕总高 */
+    height: 100vh;
+    /* 背景的渐变色 */
+    background-image: linear-gradient(#78f, #f78);
+}
+
+.box ul {
+    width: 1000px;
+    height: 320px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.box ul li {
+    /* 相对定位 */
+    position: relative;
+    float: left;
+    list-style-type: none;
+    width: 200px;
+    height: 320px;
+    transition: all .5s;
+}
+
+.box ul li p {
+    /* 绝对定位 */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .3);
+    transition: all .3s;
+}
+
+.box ul li:hover p {
+    font-size: 20px;
+}
+
+.box ul:hover li {
+    width: 90px;
+}
+
+.box ul li:hover {
+    width: 640px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>国庆节快乐</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+      $(function () {
+        $(".btn").click(function () {
+          $(this).hide();
+          $(".box").fadeIn();
+          $("audio").trigger("play");
+          $(".red_flag").animate({ top: "20px" }, 47000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="btn">国庆节快乐</div>
+    <div class="box">
+      <div class="circle"></div>
+      <div class="flagpole"></div>
+      <div class="red_flag">
+        <div class="star star1"><img src="images/star.png" alt="" /></div>
+        <div class="star star2"><img src="images/star.png" alt="" /></div>
+        <div class="star star3"><img src="images/star.png" alt="" /></div>
+        <div class="star star4"><img src="images/star.png" alt="" /></div>
+        <div class="star star5"><img src="images/star.png" alt="" /></div>
+      </div>
+      <div class="soldier"><img src="images/salute.png" alt="" /></div>
+      <div class="platform1"></div>
+      <div class="platform2"></div>
+    </div>
+    <audio src="media/义勇军进行曲.mp3"></audio>
+  </body>
+</html>

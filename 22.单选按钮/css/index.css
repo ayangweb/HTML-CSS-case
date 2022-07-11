@@ -1,0 +1,66 @@
+* {
+	/* 初始化 清除元素的内外边距 */
+	padding: 0;
+	margin: 0;
+}
+body {
+	/* 弹性布局 让元素在页面中垂直+水平居中 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 让页面占浏览器可视区域的高度 */
+	height: 100vh;
+	background-color: #f4e7ec;
+}
+.container {
+	display: flex;
+	/* 让子元素垂直排列 */
+	flex-direction: column;
+}
+.container label {
+	display: flex;
+	/* 鼠标移入变小手 */
+	cursor: pointer;
+}
+.container label input {
+	/* 隐藏元素 先显示出来 */
+	display: none;
+}
+/* + 是相邻兄弟选择器 */
+.container label input + span {
+	display: flex;
+	/* 让伪元素和文字水平排列 */
+	align-items: center;
+	padding: 15px 30px;
+	margin-bottom: 10px;
+	font-size: 40px;
+	border-radius: 90px;
+	transition: all 0.3s;
+}
+/* 鼠标移入变背景颜色 */
+.container label input + span:hover {
+	background-color: #edd8e0;
+}
+/* 选中单选按钮对应的span元素背景颜色改变 */
+.container label input:checked + span {
+	background-color: #edd8e0;
+}
+.container label input + span::before {
+	content: "";
+	/* 伪元素是行内元素 需要转为块级元素才能设置宽高 */
+	display: block;
+	width: 60px;
+	height: 60px;
+	/* 圆角属性 */
+	border-radius: 50%;
+	margin-right: 15px;
+	background-color: #fff;
+	/* 盒子阴影 inset是内部阴影 */
+	box-shadow: 0 0 0 5px #900c3f inset;
+	/* 加个过渡时间 */
+	transition: all 0.3s;
+}
+.container label input:checked + span::before {
+	/* 选中的元素内部的阴影加深 */
+	box-shadow: 0 0 0 15px #900c3f inset;
+}
